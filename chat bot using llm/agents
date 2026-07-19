@@ -1,1 +1,16 @@
+AI Components (Logical Agents)
 
+• Prompt Agent
+  - Builds the system prompt
+  - Selects assistant persona
+
+• Memory Agent
+  - Stores conversation history
+  - Retrieves previous context
+
+• Response Agent
+  - Sends formatted messages to the LLM
+  - Returns the generated response
+
+• Chatbot Orchestrator
+  - Coordinates all components
