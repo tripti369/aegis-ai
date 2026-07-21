@@ -49,3 +49,19 @@ class ConversationMemory:
         Check whether memory is empty.
         """
         return len(self.messages) == 0
+    
+    def message_count(self):
+        """
+        Return number of stored messages.
+        """
+        return len(self.messages)
+    
+    def last_message(self):
+        """
+        Return the latest message.
+        """
+
+        if self.is_empty():
+         return None
+
+        return self.messages[-1]

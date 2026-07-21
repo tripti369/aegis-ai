@@ -12,7 +12,7 @@ from memory import ConversationMemory
 from prompts import build_messages
 from config import DEFAULT_MODE
 from llm import generate_response
-
+from config import ASSISTANT_MODES
 
 class AIChatbot:
     """
@@ -65,6 +65,9 @@ class AIChatbot:
         """
         Change assistant mode.
         """
+
+        if mode not in ASSISTANT_MODES:
+            raise ValueError(f"Invalid mode: {mode}")
         self.mode = mode
 # Global chatbot instance
 chatbot = AIChatbot()
