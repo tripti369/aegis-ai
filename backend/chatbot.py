@@ -56,19 +56,28 @@ class AIChatbot:
         self.memory.clear()
 
     def get_history(self):
-        """
-        Return conversation history.
-        """
-        return self.memory.get_messages()
+       """
+       Return conversation history.
+       """
+       return self.memory.get_messages()
 
-    def set_mode(self, mode: str):
-        """
-        Change assistant mode.
-        """
 
-        if mode not in ASSISTANT_MODES:
-            raise ValueError(f"Invalid mode: {mode}")
-        self.mode = mode
+def get_mode(self):
+    """
+    Return the current assistant mode.
+    """
+    return self.mode
+
+
+def set_mode(self, mode: str):
+    """
+    Change assistant mode.
+    """
+
+    if mode not in ASSISTANT_MODES:
+        raise ValueError(f"Invalid mode: {mode}")
+
+    self.mode = mode
 # Global chatbot instance
 chatbot = AIChatbot()
 
@@ -78,3 +87,7 @@ def get_ai_response(user_message: str) -> str:
     Entry point used by the FastAPI backend.
     """
     return chatbot.chat(user_message)
+
+def get_mode(self):
+    print("get_mode() called")
+    return self.mode
