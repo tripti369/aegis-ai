@@ -2,6 +2,7 @@ from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
 from chatbot import chatbot, get_ai_response
 from typing import List
+from config import MODEL_NAME, MAX_HISTORY
 
 # Create the FastAPI application
 app = FastAPI(
@@ -135,3 +136,76 @@ def clear_conversation() -> ClearResponse:
     return {
         "message": "Conversation cleared successfully."
     }
+
+class ModeRequest(BaseModel):
+    mode: str
+
+
+class ModeResponse(BaseModel):
+    message: str
+    mode: str
+
+@app.get(
+    "/mode",
+    response_model=ModeResponse,
+    tags=["Assistant"]
+)
+def get_mode():
+    """
+    Return the current assistant mode.
+    """
+
+    return {
+        "message": "Current assistant mode",
+        "mode": chatbot.get_mode()
+    }
+
+@app.post(
+    "/mode",
+    response_model=ModeResponse,
+    tags=["Assistant"]
+)
+def change_mode(request: ModeRequest):
+    """
+    Change the assistant mode.
+    """
+
+    try:
+        chatbot.set_mode(request.mode)
+
+        return {
+            "message": "Assistant mode updated successfully.",
+            "mode": chatbot.get_mode()
+        }
+
+    except ValueError as e:
+        raise HTTPException(
+            status_code=400,
+            detail=str(e)
+        )
+    
+class StatsResponse(BaseModel):
+    model: str
+    mode: str
+    message_count: int
+    memory_limit: int
+
+@app.get(
+    "/stats",
+    response_model=StatsResponse,
+    tags=["Assistant"],
+    summary="Chat Statistics"
+)
+def get_stats():
+    """
+    Return chatbot statistics.
+    """
+
+    history = chatbot.get_history()
+
+    return StatsResponse(
+        model=MODEL_NAME,
+        mode=chatbot.get_mode(),
+        message_count=len(history),
+        memory_limit=MAX_HISTORY
+    )
