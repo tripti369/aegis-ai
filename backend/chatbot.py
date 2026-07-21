@@ -62,22 +62,22 @@ class AIChatbot:
        return self.memory.get_messages()
 
 
-def get_mode(self):
-    """
-    Return the current assistant mode.
-    """
-    return self.mode
+    def get_mode(self):
+       """
+       Return the current assistant mode.
+       """
+       return self.mode
 
 
-def set_mode(self, mode: str):
-    """
-    Change assistant mode.
-    """
+    def set_mode(self, mode: str):
+      """
+      Change assistant mode.
+       """
 
-    if mode not in ASSISTANT_MODES:
+      if mode not in ASSISTANT_MODES:
         raise ValueError(f"Invalid mode: {mode}")
 
-    self.mode = mode
+      self.mode = mode
 # Global chatbot instance
 chatbot = AIChatbot()
 
