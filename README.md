@@ -6,6 +6,14 @@ Aegis AI Chatbot is an AI-powered chatbot developed using **FastAPI** and **Groq
 Aegis AI Chatbot is a backend application that enables users to interact with a Large Language Model (LLM) through REST APIs. The chatbot is powered by the **Groq API** using the **Llama 3.3 70B Versatile** model.
 The project focuses on clean architecture, API testing, documentation, and easy deployment.
 
+ ## Team Members
+| Name | Role | Responsibilities |
+|------|------|------------------|
+| **Harshita** | Backend Lead | Project setup, FastAPI backend, API integration |
+| **Tripti** | AI/ML Lead | Groq LLM integration, AI logic |
+| **Soham** | Streamlit UI Developer | Frontend and user interface |
+| **Arshi Ahmad** | Testing, Documentation & Prompt Engineering | API testing, bug reporting, documentation, prompt testing |
+
 ## Project Objectives
 - Build an AI chatbot using Groq LLM.
 - Create a FastAPI backend.
@@ -34,13 +42,7 @@ The following APIs were tested successfully:
 - POST /chat
 - Empty message validation
 
- ## Team Members
-| Name | Role | Responsibilities |
-|------|------|------------------|
-| **Harshita** | Backend Lead | Project setup, FastAPI backend, API integration |
-| **Tripti** | AI/ML Lead | Groq LLM integration, AI logic |
-| **Soham** | Streamlit UI Developer | Frontend and user interface |
-| **Arshi Ahmad** | Testing, Documentation & Prompt Engineering | API testing, bug reporting, documentation, prompt testing |
+
 
  
   
